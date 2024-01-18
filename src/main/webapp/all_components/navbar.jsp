@@ -10,8 +10,8 @@
     </form>
 </div>
 <div class="col-md-3">
-<a href="" class="btn btn-success">Login</a>
-<a href="" class="btn btn-primary">Register</a>
+<a href="login.jsp" class="btn btn-success">Login</a>
+<a href="register.jsp" class="btn btn-primary">Register</a>
 </div>
 </div>
 </div>
