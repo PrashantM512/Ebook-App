@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="com.DB.DBConnect" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +35,9 @@ body{
 			<i class="fa-solid fa-book"></i>&nbsp;E-Book management System
 		</h2>
 	</div>
+	
+	
+	
 	
 	<!-- Recent books section -->
 	<div class="container ">
