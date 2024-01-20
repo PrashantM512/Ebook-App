@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,9 +40,9 @@
 									id="exampleInputPassword1" required>
 							</div>
 							<div class="mb-3 form-check">
-								<input type="checkbox" class="form-check-input"
+								<input type="checkbox" name="check" class="form-check-input"
 									id="exampleCheck1"> <label class="form-check-label"
-									for="exampleCheck1" name="check">Check me out</label>
+									for="exampleCheck1" >Agree terms and conditions</label>
 							</div>
 							<button type="submit" class="btn btn-primary">Submit</button>
 						</form>

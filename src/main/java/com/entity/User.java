@@ -6,13 +6,13 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
-	private int phone;
+	private String phone;
 	private String address;
 	private String landmark;
 	private String city;
 	private String state;
 	private int pincode;
-	public User(int id, String name, String email, String password, int phone, String address, String landmark,
+	public User(int id, String name, String email, String password, String phone, String address, String landmark,
 			String city, String state, int pincode) {
 		super();
 		this.id = id;
@@ -30,7 +30,7 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(String name, String email, String password, int phone, String address, String landmark, String city,
+	public User(String name, String email, String password, String phone, String address, String landmark, String city,
 			String state, int pincode) {
 		super();
 		this.name = name;
@@ -67,10 +67,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public String getAddress() {
@@ -103,7 +103,7 @@ public class User {
 	public void setPincode(int pincode) {
 		this.pincode = pincode;
 	}
-	public User(String name, String email, int phone,String password) {
+	public User(String name, String email, String phone,String password) {
 		super();
 		this.name = name;
 		this.email = email;

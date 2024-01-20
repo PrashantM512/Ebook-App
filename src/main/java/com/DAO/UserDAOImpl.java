@@ -18,11 +18,11 @@ public class UserDAOImpl implements UserDAO {
 		boolean f=false;
 		
 		try {
-			String query="INSERT INTO User(name,email,phone,password) VALUES(?,?,?,?)";
+			String query="INSERT INTO user(name,email,phone,password) VALUES(?,?,?,?)";
 			PreparedStatement stmt=conn.prepareStatement(query);
 			stmt.setString(1,us.getName());
 			stmt.setString(2,us.getEmail());
-			stmt.setInt(3, us.getPhone());
+			stmt.setString(3, us.getPhone());
 			stmt.setString(4,us.getPassword());
 			int a=stmt.executeUpdate();
 			if(a==1) {
@@ -30,7 +30,7 @@ public class UserDAOImpl implements UserDAO {
 			}
 			
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 		
 		return f;
