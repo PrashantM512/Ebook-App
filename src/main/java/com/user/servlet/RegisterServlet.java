@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
 			String check=request.getParameter("check");
            // System.out.print(name+""+email+""+phone+""+password+""+check);
 			
-			if(check.equals("on")) {
+			if(check!=null) {
 				User us=new User();
 				us.setName(name);
 				us.setEmail(email);
@@ -51,18 +51,18 @@ public class RegisterServlet extends HttpServlet {
 				boolean f=dao.userRegister(us);
 				if(f) {
 					//System.out.println("successfully Registerd..");
-					session.setAttribute("sucsess","successfully Registerd.." );
-					response.sendRedirect("resgister.jsp");
+					session.setAttribute("success","Successfully Registerd.." );
+					response.sendRedirect("register.jsp");
 				}else {
 					//System.out.println("Something went wrong..");
 					session.setAttribute("unsuccess","Something went wrong..");
-					response.sendRedirect("resgister.jsp");
+					response.sendRedirect("register.jsp");
 				}
 				
 			}else {
 				//System.out.println("Please accept terms and conditions...");
 				session.setAttribute("check","Please accept terms and conditions...");
-				response.sendRedirect("resgister.jsp");
+				response.sendRedirect("register.jsp");
 			}
 			
 			

@@ -12,6 +12,20 @@ public class User {
 	private String city;
 	private String state;
 	private int pincode;
+	
+	public User(int id, String name, String email, String phone, String address, String landmark, String city,
+			String state, int pincode) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.landmark = landmark;
+		this.city = city;
+		this.state = state;
+		this.pincode = pincode;
+	}
 	public User(int id, String name, String email, String password, String phone, String address, String landmark,
 			String city, String state, int pincode) {
 		super();
