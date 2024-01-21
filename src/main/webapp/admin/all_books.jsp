@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+  	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+  	<%@page import="com.DAO.BookDao" %>
+  		<%@page import="com.DB.DBConnect" %>
+  		<%@page import="java.util.*" %>
+  		<%@page import="com.entity.*" %>
+  	
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +20,9 @@
 <table class="table">
   <thead class="table-dark">
     <tr>
+     
       <th scope="col">Id</th>
+       <th scope="col">photo</th>
       <th scope="col">Book Name</th>
       <th scope="col">Author </th>
       <th scope="col">Price</th>
@@ -24,42 +32,28 @@
     </tr>
   </thead>
   <tbody>
+  <%
+BookDao book=new BookDao(DBConnect.getConnection());
+List<Book> blist=book.getBooks();
+
+for(Book b:blist){
+	%>
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-       <td>Otto</td>
-      <td>@mdo</td>
+      <td><%=b.getBookId() %></td>
+      <td ><img Style="height:50px; width:50px" src="../books/<%=b.getPhoto() %>"></td>
+      <td><%=b.getBookName() %></td>
+      <td><%=b.getAuthor() %></td>
+       <td><%=b.getPrice() %></td>
+      <td><%=b.getBookCategory() %></td>
+      <td><%=b.getStatus() %></td>
       <td>
       <a href="" class="btn btn-sm btn-primary">Edit</a>
       <a href="" class="btn btn-sm btn-danger">Delete</a>
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-       <td>Otto</td>
-      <td>@mdo</td>
-      <td>
-      <a href="" class="btn btn-sm btn-primary">Edit</a>
-      <a href="" class="btn btn-sm btn-danger">Delete</a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>@twitter</td>
-       <td>Otto</td>
-       <td>sjdkc</td>
-      <td>@mdo</td>
-      <td>
-      <a href="" class="btn btn-sm btn-primary">Edit</a>
-      <a href="" class="btn btn-sm btn-danger">Delete</a>
-      </td>
-    </tr>
+          <%
+}
+      %>
   </tbody>
 </table>
 </div>
