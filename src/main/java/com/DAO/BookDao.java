@@ -66,4 +66,32 @@ public class BookDao {
     	return list;
     }
     
+    public Book getBookById(int id) {
+    	Book book=null;
+    	
+    	try {
+    		String query="SELECT * FROM book_dtls WHERE bookId=?";
+    		PreparedStatement stmt=conn.prepareStatement(query);
+    		stmt.setInt(1, id);
+    		ResultSet rs=stmt.executeQuery();
+    		
+    		while(rs.next()) {
+    			book=new Book();
+        		book.setBookId(rs.getInt(1));
+        		book.setBookName(rs.getString(2));
+        		book.setAuthor(rs.getString(3));
+        		book.setPrice(rs.getString(4));
+        		book.setBookCategory(rs.getString(5));
+        		book.setStatus(rs.getString(6));
+        		book.setPhoto(rs.getString(7));
+    		}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return book;
+    }
+    
+    
 }
