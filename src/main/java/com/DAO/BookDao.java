@@ -93,5 +93,26 @@ public class BookDao {
     	return book;
     }
     
+    public Book editBookById(int id,Book book) {
+    	
+    	try {
+			String query="UPDATE book_dtls SET boookName=?,author=?,price=?,bookCategory=?,status=?,photo=? WHERE bookId=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1, book.getBookName());
+			stmt.setString(2, book.getAuthor());
+			stmt.setString(3, book.getPrice());
+			stmt.setString(4, book.getBookCategory());
+			stmt.setString(5, book.getStatus());
+			stmt.setString(6, book.getPhoto());
+			stmt.setInt(7, book.getBookId());
+			stmt.executeUpdate();
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return book;
+    }
+    
     
 }
