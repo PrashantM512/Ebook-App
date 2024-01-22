@@ -1,4 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:if test="${empty userObj }">
+<c:redirect url="../login.jsp"/>
+</c:if>
 <div class="container-fluid p-3" style="background-color:white;">
 <div class="row">
 <div class="col-md-3 text-success">
@@ -14,7 +17,7 @@
 
 <c:if test="${not empty userObj }">
 <a class="btn btn-primary text-white"><i class="fas fa-user"></i> ${userObj.name}</a>
-<a href="" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+<a href="" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </c:if>
 
 <c:if test="${empty userObj }">
@@ -24,6 +27,7 @@
 </div>
 </div>
 </div>
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
   <a class="navbar-brand" href="#"><i class="fa-solid fa-house"></i></a>
