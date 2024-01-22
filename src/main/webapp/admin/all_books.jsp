@@ -24,6 +24,14 @@
 		<p class="text-center text-success">${editFailed}</p>
 		<c:remove var="editFailed" scope="session" />
 	</c:if>
+	<c:if test="${not empty deleteSuccess }">
+		<p class="text-center text-success">${deleteSuccess}</p>
+		<c:remove var="deleteSuccess" scope="session" />
+	</c:if>
+	<c:if test="${not empty deleteFailed }">
+		<p class="text-center text-success">${deleteFailed}</p>
+		<c:remove var="deleteFailed" scope="session" />
+	</c:if>
 	<div class="container pt-3">
 		<table class="table">
 			<thead class="table-dark">
@@ -60,7 +68,7 @@
 						</c:url> <a href="${editBookUrl}" class="btn btn-sm btn-primary">Edit</a> --%>
                
 						<a href="../GetBookServlet?id=<%=b.getBookId() %>" class="btn btn-sm btn-primary">Edit</a>
-						<a href="" class="btn btn-sm btn-danger">Delete</a>
+						<a href="../DeleteBookServlet?id=<%=b.getBookId() %>" class="btn btn-sm btn-danger">Delete</a>
 						</td>
 				</tr>
 				<%

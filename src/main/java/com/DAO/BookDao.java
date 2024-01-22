@@ -114,5 +114,21 @@ public class BookDao {
     	return book;
     }
     
+    public Boolean deleteBookById(int id) {
+    	boolean d=false;
+    	
+    	try {
+			String query="DELETE FROM book_dtls WHERE bookId=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			d=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	
+    	return d;
+    }
     
 }

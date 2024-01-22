@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="container-fluid p-3" style="background-color:white;">
 <div class="row">
 <div class="col-md-3 text-success">
@@ -10,8 +11,16 @@
     </form>
 </div>
 <div class="col-md-3">
-<a href="login.jsp" class="btn btn-success">Login</a>
-<a href="register.jsp" class="btn btn-primary">Register</a>
+
+<c:if test="${not empty userObj }">
+<a class="btn btn-primary text-white"><i class="fas fa-user"></i> ${userObj.name}</a>
+<a href="" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+</c:if>
+
+<c:if test="${empty userObj }">
+<a href="../login.jsp" class="btn btn-success">Login</a>
+<a href="../register.jsp" class="btn btn-primary">Register</a>
+</c:if>
 </div>
 </div>
 </div>

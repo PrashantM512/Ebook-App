@@ -10,9 +10,7 @@
 <%@include file="allCss.jsp"%>
 </head>
 <body>
-	<c:if test="${not empty userObj }">
-		<h2>${userObj.name}</h2>
-		</c:if>
+
 		<%@include file="navbar.jsp"%>
 
 		<div class="container">
