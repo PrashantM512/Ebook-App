@@ -4,7 +4,7 @@
 <%@ page import="com.DB.DBConnect" %>
 <%@ page import="com.DAO.BookDao" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.entity.Book" %>
+<%@ page import="com.entity.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +14,9 @@
 </head>
 <body>
 <%@include file="all_components/navbar.jsp"%>
+<%
+User user=(User)session.getAttribute("userObj");
+%>
 <div class="container ">
 		<h3 class="text-center p-2">Recent Books</h3>
 		<div class="row">
@@ -37,7 +40,16 @@
 						<%
 						if(bk.getBookCategory().equals("New")){
 							%>
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%
+							if(user==null){ %>
+								<a href="login.jsp" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%	
+							}else{
+							%>
+							<a href="CartServlet?bid=<%=bk.getBookId() %>&&uid=<%=user.getId() %>" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%
+							}
+							%>
 					<% 	}
 						%>
 							 <a href="view_book.jsp?id=<%=bk.getBookId() %>"

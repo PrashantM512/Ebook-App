@@ -4,7 +4,7 @@
 <%@ page import="com.DB.DBConnect"%>
 <%@ page import="com.DAO.BookDao"%>
 <%@ page import="java.util.*"%>
-<%@ page import="com.entity.Book"%>
+<%@ page import="com.entity.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,9 @@
 	BookDao book = new BookDao(DBConnect.getConnection());
 	Book bk = book.getBookById(id);
 	%>
-
+<%
+User user=(User)session.getAttribute("userObj");
+%>
 	<div class="container p-3">
 		<div class="row">
 			<div class="col-md-6 text-center p-5 border bg-white">
@@ -76,9 +78,19 @@
 				}else{
 					%>
 						<div class=" text-center p-3">
-					<a href="" class="btn btn-primary"><i class="fas fa-cart-plus"></i>
-						Add Cart</a> <a href="" class="btn btn-danger"><i
-						class="fas fa-rupee-sign"></i><%=bk.getPrice()%></a>
+						
+					<%
+							if(user==null){ %>
+								<a href="login.jsp" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%	
+							}else{
+							%>
+							<a href="CartServlet" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%
+							}
+							%>
+					<a href="" class="btn btn-danger">
+					<i class="fas fa-rupee-sign"></i><%=bk.getPrice()%></a>
 				</div>
 					<%
 				}

@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 			User us=user.login(email, password);
 		   if(us!=null) {
 			   session.setAttribute("userObj",us);
-			   response.sendRedirect("home.jsp");
+			   response.sendRedirect("index.jsp");
 			   
 		   }else {
 			   session.setAttribute("invalid","invalid email or password...");

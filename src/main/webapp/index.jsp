@@ -5,7 +5,7 @@
 <%@ page import="com.DB.DBConnect" %>
 <%@ page import="com.DAO.BookDao" %>
 <%@ page import="java.util.*" %>
-<%@ page import="com.entity.Book" %>
+<%@ page import="com.entity.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +34,9 @@ body{
 </style>
 <body>
 	<%@include file="all_components/navbar.jsp"%>
+	<%
+	User user=(User)session.getAttribute("userObj");
+	%>
 	<div class="container-fluid back-img">
 		<h2 class="text-center title Bold pt-3">
 			<i class="fa-solid fa-book"></i>&nbsp;E-Book management System
@@ -64,7 +67,18 @@ body{
 						<%
 						if(bk.getBookCategory().equals("New")){
 							%>
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							
+							<%
+							if(user==null){ %>
+								<a href="login.jsp" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%	
+							}else{
+							%>
+							<a href="CartServlet?bid=<%=bk.getBookId() %>&&uid=<%=user.getId() %>" id="liveToastBtn" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%
+							}
+							%>
+							
 					<% 	}
 						%>
 							 <a href="view_book.jsp?id=<%=bk.getBookId() %>"
@@ -108,7 +122,16 @@ body{
 						<p>Author :<%=bk.getAuthor() %></p>
 						<p>Category :<%=bk.getBookCategory() %></p>
 						<div class="row" style="place-content: center;">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%
+							if(user==null){ %>
+								<a href="login.jsp" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%	
+							}else{
+							%>
+							<a href="CartServlet?bid=<%=bk.getBookId() %>&&uid=<%=user.getId() %>" id="liveToastBtn" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<%
+							}
+							%>
 							 <a href="view_book.jsp?id=<%=bk.getBookId() %>"
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
