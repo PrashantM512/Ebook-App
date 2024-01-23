@@ -40,7 +40,7 @@
 							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
 					<% 	}
 						%>
-							 <a href=""
+							 <a href="view_book.jsp?id=<%=bk.getBookId() %>"
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
 								

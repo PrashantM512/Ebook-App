@@ -67,10 +67,9 @@ body{
 							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
 					<% 	}
 						%>
-							 <a href=""
+							 <a href="view_book.jsp?id=<%=bk.getBookId() %>"
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
-								
 								
 						</div>
 					</div>
@@ -83,7 +82,7 @@ body{
 		</div>
 	</div>
 	<div class="text-center mt-2">
-	<a href="" class="btn btn-outline-primary btn-view pt-1">View all</a>
+	<a href="recent_books.jsp" class="btn btn-outline-primary btn-view pt-1">View all</a>
 	</div>
 	<!-- End of recent books -->
 	<hr>
@@ -110,7 +109,7 @@ body{
 						<p>Category :<%=bk.getBookCategory() %></p>
 						<div class="row" style="place-content: center;">
 							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
-							 <a href=""
+							 <a href="view_book.jsp?id=<%=bk.getBookId() %>"
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
 								
@@ -125,7 +124,7 @@ body{
 		</div>
 	</div>
 	<div class="text-center mt-2">
-	<a href="" class="btn btn-outline-primary btn-view pt-1">View all</a>
+	<a href="new_books.jsp" class="btn btn-outline-primary btn-view pt-1">View all</a>
 	</div>
     <!-- end of recent books -->
     <hr>
@@ -151,7 +150,7 @@ body{
 						<p>Category :<%=bk.getBookCategory() %></p>
 						<div class="row" style="place-content: center;">
 						
-							 <a href=""
+							 <a href="view_book.jsp?id=<%=bk.getBookId() %>"
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
 						</div>
@@ -165,7 +164,7 @@ body{
 		</div>
 		</div>
 	<div class="text-center mt-2">
-	<a href="" class="btn btn-outline-primary btn-view pt-1">View all</a>
+	<a href="old_books.jsp" class="btn btn-outline-primary btn-view pt-1">View all</a>
 	</div>
     <!-- end of old books -->
 

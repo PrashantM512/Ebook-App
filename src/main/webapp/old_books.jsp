@@ -35,7 +35,7 @@
 						<p>Category :<%=bk.getBookCategory() %></p>
 						<div class="row" style="place-content: center;">
 						
-							 <a href=""
+							 <a href="view_book.jsp?id=<%=bk.getBookId() %>"
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
 								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
 						</div>
@@ -45,7 +45,6 @@
 				<% 
 	}
 	%>
-		
 		</div>
 		</div>
 <%@include file="all_components/footer.jsp" %>
