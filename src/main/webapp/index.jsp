@@ -58,8 +58,8 @@ body{
 						<img alt="" src="books/<%=bk.getPhoto() %> "
 							style="width: 150px; height: 200px" class="img-thumblin">
 						<p><%=bk.getBookName() %></p>
-						<p><%=bk.getAuthor() %></p>
-						<p>Categories:<%=bk.getBookCategory() %></p>
+						<p>Author :<%=bk.getAuthor() %></p>
+						<p>Category :<%=bk.getBookCategory() %></p>
 						<div class="row" style="place-content: center;">
 						<%
 						if(bk.getBookCategory().equals("New")){
@@ -95,9 +95,9 @@ body{
 			<%
 	BookDao book2=new BookDao(DBConnect.getConnection());
 	List<Book> bklist2=new ArrayList<Book>();
-	bklist=book.getNewBooks();
+	bklist2=book2.getNewBooks();
 	
-	for(Book bk:bklist){
+	for(Book bk:bklist2){
 		
 		%>
 			<div class="col-md-3">
@@ -106,8 +106,8 @@ body{
 						<img alt="" src="books/<%=bk.getPhoto() %> "
 							style="width: 150px; height: 200px" class="img-thumblin">
 						<p><%=bk.getBookName() %></p>
-						<p><%=bk.getAuthor() %></p>
-						<p>Categories:<%=bk.getBookCategory() %></p>
+						<p>Author :<%=bk.getAuthor() %></p>
+						<p>Category :<%=bk.getBookCategory() %></p>
 						<div class="row" style="place-content: center;">
 							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
 							 <a href=""
@@ -136,9 +136,9 @@ body{
 			<%
 	BookDao book3=new BookDao(DBConnect.getConnection());
 	List<Book> bklist3=new ArrayList<Book>();
-	bklist=book.getOldBooks();
+	bklist3=book3.getOldBooks();
 	
-	for(Book bk:bklist){
+	for(Book bk:bklist3){
 		
 		%>
 			<div class="col-md-3">
@@ -147,8 +147,8 @@ body{
 						<img alt="" src="books/<%=bk.getPhoto() %> "
 							style="width: 150px; height: 200px" class="img-thumblin">
 						<p><%=bk.getBookName() %></p>
-						<p><%=bk.getAuthor() %></p>
-						<p>Categories:<%=bk.getBookCategory() %></p>
+						<p>Author :<%=bk.getAuthor() %></p>
+						<p>Category :<%=bk.getBookCategory() %></p>
 						<div class="row" style="place-content: center;">
 						
 							 <a href=""

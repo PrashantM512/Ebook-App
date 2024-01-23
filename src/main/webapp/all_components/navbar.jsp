@@ -17,7 +17,7 @@
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
-  <a class="navbar-brand" href="#"><i class="fa-solid fa-house"></i></a>
+  <a class="navbar-brand" href="index.jsp"><i class="fa-solid fa-house"></i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,16 +25,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">New Books</a>
+        <a class="nav-link" href="new_books.jsp">New Books</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Recent Books</a>
+        <a class="nav-link" href="recent_books.jsp">Recent Books</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Old Books</a>
+        <a class="nav-link" href="old_books.jsp">Old Books</a>
       </li>
      
     </ul>

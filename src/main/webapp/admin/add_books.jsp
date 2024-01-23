@@ -28,7 +28,7 @@
 						<c:remove var="added" scope="session"/>
 						</c:if>
 						<c:if test="${not empty failed }">
-						<p class="text-center text-success">${failed}</p>
+						<p class="text-center text-danger">${failed}</p>
 						<c:remove var="failed" scope="session"/>
 						</c:if>
 						<form action="../AdminAddBookServlet" method="post"
@@ -52,7 +52,7 @@
 									id="inputState" name="btype" class="form-control">
 									<option selected>--select--</option>
 									<option value="New">New Book</option>
-									<option value="old">New Book</option>
+									<option value="old">Old Book</option>
 								</select>
 							</div>
 							<div class="form-group">
