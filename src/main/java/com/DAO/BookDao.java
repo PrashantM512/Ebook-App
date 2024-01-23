@@ -130,5 +130,93 @@ public class BookDao {
     	
     	return d;
     }
+    public List<Book> getRecentBooks(){
+    	List<Book> list=new ArrayList<Book>(); 
+    	Book bk=null;
+    	
+    	try {
+    		String query = "SELECT * FROM book_dtls WHERE status=? ORDER BY bookId DESC";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1,"Active");
+			ResultSet rs=stmt.executeQuery();
+			int i=1;
+			while(rs.next()&&i<=4) {
+				bk=new Book();
+				bk.setBookId(rs.getInt(1));
+        		bk.setBookName(rs.getString(2));
+        		bk.setAuthor(rs.getString(3));
+        		bk.setPrice(rs.getString(4));
+        		bk.setBookCategory(rs.getString(5));
+        		bk.setStatus(rs.getString(6));
+        		bk.setPhoto(rs.getString(7));
+        		list.add(bk);
+        		i++;
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return list;
+    }
+    public List<Book> getNewBooks(){
+    	List<Book> list=new ArrayList<Book>(); 
+    	Book bk=null;
+    	
+    	try {
+    		String query = "SELECT * FROM book_dtls WHERE bookCategory=? and status=? ORDER BY bookId DESC";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1,"New");
+			stmt.setString(2,"Active");
+			ResultSet rs=stmt.executeQuery();
+			int i=1;
+			while(rs.next()&&i<=4) {
+				bk=new Book();
+				bk.setBookId(rs.getInt(1));
+        		bk.setBookName(rs.getString(2));
+        		bk.setAuthor(rs.getString(3));
+        		bk.setPrice(rs.getString(4));
+        		bk.setBookCategory(rs.getString(5));
+        		bk.setStatus(rs.getString(6));
+        		bk.setPhoto(rs.getString(7));
+        		list.add(bk);
+        		i++;
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return list;
+    }
+    public List<Book> getOldBooks(){
+    	List<Book> list=new ArrayList<Book>(); 
+    	Book bk=null;
+    	
+    	try {
+    		String query = "SELECT * FROM book_dtls WHERE bookCategory=? ORDER BY bookId DESC";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1,"old");
+			ResultSet rs=stmt.executeQuery();
+			int i=1;
+			while(rs.next()&&i<=4) {
+				bk=new Book();
+				bk.setBookId(rs.getInt(1));
+        		bk.setBookName(rs.getString(2));
+        		bk.setAuthor(rs.getString(3));
+        		bk.setPrice(rs.getString(4));
+        		bk.setBookCategory(rs.getString(5));
+        		bk.setStatus(rs.getString(6));
+        		bk.setPhoto(rs.getString(7));
+        		list.add(bk);
+        		i++;
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return list;
+    }
     
 }

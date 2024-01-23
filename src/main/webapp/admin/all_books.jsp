@@ -4,7 +4,7 @@
 <%@page import="com.DAO.BookDao"%>
 <%@page import="com.DB.DBConnect"%>
 <%@page import="java.util.*"%>
-<%@page import="com.entity.*"%>
+<%@page import="com.entity.*"%> 
 
 <!DOCTYPE html>
 <html>

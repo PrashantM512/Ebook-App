@@ -59,6 +59,7 @@
 									id="inputState"  name="btype" class="form-control">
 									<option value="${bookObj.bookCategory }" selected>${bookObj.bookCategory }</option>
 									<option value="New">New Book</option>
+									<option value="old">Old Book</option>
 								</select>
 							</div>
 							<div class="form-group">

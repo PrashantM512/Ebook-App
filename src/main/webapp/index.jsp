@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="com.DB.DBConnect" %>
+<%@ page import="com.DAO.BookDao" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.entity.Book" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,80 +38,48 @@ body{
 		<h2 class="text-center title Bold pt-3">
 			<i class="fa-solid fa-book"></i>&nbsp;E-Book management System
 		</h2>
-	</div>
-	
-	
-	
+	</div>	
 	
 	<!-- Recent books section -->
 	<div class="container ">
 		<h3 class="text-center p-2">Recent Books</h3>
 		<div class="row">
+			<%
+	BookDao book=new BookDao(DBConnect.getConnection());
+	List<Book> bklist=new ArrayList<Book>();
+	bklist=book.getRecentBooks();
+	
+	for(Book bk:bklist){
+		
+		%>
 			<div class="col-md-3">
 				<div class="card">
 					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
+						<img alt="" src="books/<%=bk.getPhoto() %> "
 							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a> <a href=""
+						<p><%=bk.getBookName() %></p>
+						<p><%=bk.getAuthor() %></p>
+						<p>Categories:<%=bk.getBookCategory() %></p>
+						<div class="row" style="place-content: center;">
+						<%
+						if(bk.getBookCategory().equals("New")){
+							%>
+							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+					<% 	}
+						%>
+							 <a href=""
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
+								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
+								
+								
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a> <a href=""
-								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a> <a href=""
-								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a> <a href=""
-								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
+				<% 
+	}
+	%>
+		
 		</div>
 	</div>
 	<div class="text-center mt-2">
@@ -120,71 +92,36 @@ body{
     <div class="container ">
 		<h3 class="text-center p-2">New Books</h3>
 		<div class="row">
+			<%
+	BookDao book2=new BookDao(DBConnect.getConnection());
+	List<Book> bklist2=new ArrayList<Book>();
+	bklist=book.getNewBooks();
+	
+	for(Book bk:bklist){
+		
+		%>
 			<div class="col-md-3">
 				<div class="card">
 					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
+						<img alt="" src="books/<%=bk.getPhoto() %> "
 							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a> <a href=""
+						<p><%=bk.getBookName() %></p>
+						<p><%=bk.getAuthor() %></p>
+						<p>Categories:<%=bk.getBookCategory() %></p>
+						<div class="row" style="place-content: center;">
+							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							 <a href=""
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
+								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
+								
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a> <a href=""
-								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a> <a href=""
-								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row">
-							<a href="" class="btn btn-danger btn-sm ml-2">Add Cart</a> <a href=""
-								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
+				<% 
+	}
+	%>
+		
 		</div>
 	</div>
 	<div class="text-center mt-2">
@@ -196,73 +133,37 @@ body{
     <div class="container ">
 		<h3 class="text-center p-2">Old Books</h3>
 		<div class="row">
+			<%
+	BookDao book3=new BookDao(DBConnect.getConnection());
+	List<Book> bklist3=new ArrayList<Book>();
+	bklist=book.getOldBooks();
+	
+	for(Book bk:bklist){
+		
+		%>
 			<div class="col-md-3">
 				<div class="card">
 					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
+						<img alt="" src="books/<%=bk.getPhoto() %> "
 							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
+						<p><%=bk.getBookName() %></p>
+						<p><%=bk.getAuthor() %></p>
+						<p>Categories:<%=bk.getBookCategory() %></p>
 						<div class="row" style="place-content: center;">
+						
 							 <a href=""
 								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
+								class="btn btn-danger btn-sm ml-1"><i class="fa-solid fa-indian-rupee-sign"></i> 299</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row" style="place-content: center;">
-						<a href=""
-								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row" style="place-content: center;">
-							 <a href=""
-								class="btn btn-success btn-sm ml-1">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body text-center">
-						<img alt="" src="books/java.webp"
-							style="width: 150px; height: 200px" class="img-thumblin">
-						<p>Java Programming</p>
-						<p>Balguruswamy</p>
-						<p>Categories: New</p>
-						<div class="row" style="place-content: center;">
-							 <a href=""
-								class="btn btn-success btn-sm ml-5">View Details</a> <a href=""
-								class="btn btn-danger btn-sm ml-1">299</a>
-						</div>
-					</div>
-				</div>
-			</div>
+				<% 
+	}
+	%>
+		
 		</div>
-	</div>
+		</div>
 	<div class="text-center mt-2">
 	<a href="" class="btn btn-outline-primary btn-view pt-1">View all</a>
 	</div>
