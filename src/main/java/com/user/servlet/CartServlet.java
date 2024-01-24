@@ -28,7 +28,8 @@ public class CartServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+        HttpSession session=request.getSession();
+		
 		int bid=Integer.parseInt(request.getParameter("bid"));
 		int uid=Integer.parseInt(request.getParameter("uid"));
 		
@@ -48,9 +49,13 @@ public class CartServlet extends HttpServlet {
 			
 			boolean f=ckt.addIntoCart(cart);
         	if(f) {
-        		System.out.println("Add into cart successful...");
+        		session.setAttribute("addSuccess", "Book added to cart successfully...");
+        		response.sendRedirect("new_books.jsp");
+        		
         	}else {
-        		System.out.println("Something went wrong...");
+        		session.setAttribute("addFailed", "Something went wrong...");
+        		response.sendRedirect("new_books.jsp");
+        		
         	}
         	
         	response.sendRedirect("index.jsp");

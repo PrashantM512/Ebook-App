@@ -12,6 +12,41 @@
 <title>View Book</title>
 <%@include file="all_components/allCss.jsp"%>
 </head>
+<style>
+#toast {
+	min-width: 300px;
+	position: fixed;
+	bottom: 30px;
+	left: 50%;
+	margin-left: -125px;
+	background: #333;
+	padding: 10px;
+	color: white;
+	text-align: center;
+	z-index: 1;
+	font-size: 18px;
+	visibility: hidden;
+	box-shadow: 0px 0px 100px #000;
+}
+#toast.display {
+	visibility: visible;
+	animation: fadeIn 0.5, fadeOut 0.5s 2.5s;
+}
+@keyframes fadeIn {from { bottom:0;
+	opacity: 0;
+}
+to {
+	bottom: 30px;opacity: 1;
+}
+}
+@keyframes fadeOut {form { bottom:30px;
+	opacity: 1;
+}
+to {
+	bottom: 0;opacity: 0;
+}
+}
+</style>
 <body>
 	<%@include file="all_components/navbar.jsp"%>
 
@@ -72,7 +107,7 @@ User user=(User)session.getAttribute("userObj");
 					<div class=" text-center p-3">
 					<a href="index.jsp" class="btn btn-primary"><i class="fas fa-cart-plus"></i>
 					   Continue Shopping</a> <a href="" class="btn btn-danger"><i
-						class="fas fa-rupee-sign"></i><%=bk.getPrice()%></a>
+						class="fas fa-rupee-sign"></i> <%=bk.getPrice()%></a>
 				</div>
 					<%
 				}else{
@@ -81,28 +116,25 @@ User user=(User)session.getAttribute("userObj");
 						
 					<%
 							if(user==null){ %>
-								<a href="login.jsp" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+								<a href="login.jsp" class="btn btn-primary btn ml-2"><i class="fa-solid fa-cart-shopping"></i> Add Cart</a>
 							<%	
 							}else{
 							%>
-							<a href="CartServlet" class="btn btn-danger btn-sm ml-2">Add Cart</a>
+							<a href="CartServlet?bid=<%=bk.getBookId() %>&&uid=<%=user.getId() %>" class="btn btn-primary btn ml-2"><i class="fa-solid fa-cart-shopping"></i> Add Cart</a>
 							<%
 							}
 							%>
 					<a href="" class="btn btn-danger">
-					<i class="fas fa-rupee-sign"></i><%=bk.getPrice()%></a>
+					<i class="fas fa-rupee-sign"></i> <%=bk.getPrice()%></a>
 				</div>
 					<%
 				}
 				%>
 				
-			
-				
 			</div>
 		</div>
 	</div>
-	Activate
-
+	
 	<%@include file="all_components/footer.jsp"%>
 </body>
 </html>
