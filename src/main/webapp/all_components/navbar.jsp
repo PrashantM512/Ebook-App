@@ -12,7 +12,7 @@
 </div>
 <div class="col-md-3">
 <c:if test="${not empty userObj }">
-<a href="cart.jsp" class="btn btn-secondary text-white"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+<a href="cart.jsp?uid=${userObj.id}" class="btn btn-secondary text-white"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
 <a class="btn btn-primary text-white"><i class="fas fa-user"></i> ${userObj.name}</a>
 <a href="LogoutServlet" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </c:if>
