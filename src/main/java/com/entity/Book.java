@@ -9,12 +9,14 @@ public class Book {
 	private String bookCategory;
 	private String status;
 	private String photo;
+	private String email;
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public Book(int bookId, String bookName, String author, String price, String bookCategory, String status,
-			String photo) {
+			String photo, String email) {
 		super();
 		this.bookId = bookId;
 		this.bookName = bookName;
@@ -23,8 +25,12 @@ public class Book {
 		this.bookCategory = bookCategory;
 		this.status = status;
 		this.photo = photo;
+		this.email = email;
 	}
-	public Book(String bookName, String author, String price, String bookCategory, String status, String photo) {
+
+
+	public Book(String bookName, String author, String price, String bookCategory, String status, String photo,
+			String email) {
 		super();
 		this.bookName = bookName;
 		this.author = author;
@@ -32,7 +38,9 @@ public class Book {
 		this.bookCategory = bookCategory;
 		this.status = status;
 		this.photo = photo;
+		this.email = email;
 	}
+
 	public int getBookId() {
 		return bookId;
 	}
@@ -74,6 +82,13 @@ public class Book {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

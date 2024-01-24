@@ -20,7 +20,7 @@ public class BookDao {
     	boolean f=false;
     	Book book=new Book();
     	try {
-			String query="INSERT INTO book_dtls(bookId,boookName,author,price,bookCategory,status,photo) VALUES(?,?,?,?,?,?,?)";
+			String query="INSERT INTO book_dtls(bookId,boookName,author,price,bookCategory,status,photo,email) VALUES(?,?,?,?,?,?,?,?)";
 			PreparedStatement stmt=conn.prepareStatement(query);
 			stmt.setInt(1, bk.getBookId());
 			stmt.setString(2, bk.getBookName());
@@ -29,6 +29,7 @@ public class BookDao {
 			stmt.setString(5, bk.getBookCategory());
 			stmt.setString(6, bk.getStatus());
 			stmt.setString(7, bk.getPhoto());
+			stmt.setString(8, bk.getEmail());
 			stmt.executeUpdate();
 			f=true;
 			
@@ -55,6 +56,7 @@ public class BookDao {
             	book.setBookCategory(rs.getString(5));
             	book.setStatus(rs.getString(6));
             	book.setPhoto(rs.getString(7));
+            	book.setEmail(rs.getString(8));
             	list.add(book);
             	
             }
@@ -84,6 +86,7 @@ public class BookDao {
         		book.setBookCategory(rs.getString(5));
         		book.setStatus(rs.getString(6));
         		book.setPhoto(rs.getString(7));
+        		book.setEmail(rs.getString(8));
     		}
 			
 		} catch (Exception e) {
@@ -96,7 +99,7 @@ public class BookDao {
     public Book editBookById(int id,Book book) {
     	
     	try {
-			String query="UPDATE book_dtls SET boookName=?,author=?,price=?,bookCategory=?,status=?,photo=? WHERE bookId=?";
+			String query="UPDATE book_dtls SET boookName=?,author=?,price=?,bookCategory=?,status=?,photo=?,email=? WHERE bookId=?";
 			PreparedStatement stmt=conn.prepareStatement(query);
 			stmt.setString(1, book.getBookName());
 			stmt.setString(2, book.getAuthor());
@@ -104,7 +107,9 @@ public class BookDao {
 			stmt.setString(4, book.getBookCategory());
 			stmt.setString(5, book.getStatus());
 			stmt.setString(6, book.getPhoto());
-			stmt.setInt(7, book.getBookId());
+			stmt.setString(7, book.getEmail());
+			stmt.setInt(8, book.getBookId());
+			
 			stmt.executeUpdate();
     		
 		} catch (Exception e) {
@@ -149,6 +154,7 @@ public class BookDao {
         		bk.setBookCategory(rs.getString(5));
         		bk.setStatus(rs.getString(6));
         		bk.setPhoto(rs.getString(7));
+        		bk.setEmail(rs.getString(8));
         		list.add(bk);
         		i++;
 				
@@ -179,6 +185,7 @@ public class BookDao {
         		bk.setBookCategory(rs.getString(5));
         		bk.setStatus(rs.getString(6));
         		bk.setPhoto(rs.getString(7));
+        		bk.setEmail(rs.getString(8));
         		list.add(bk);
         		i++;
 				
@@ -208,6 +215,7 @@ public class BookDao {
         		bk.setBookCategory(rs.getString(5));
         		bk.setStatus(rs.getString(6));
         		bk.setPhoto(rs.getString(7));
+        		bk.setEmail(rs.getString(8));
         		list.add(bk);
         		i++;
 				
@@ -236,6 +244,7 @@ public class BookDao {
         		bk.setBookCategory(rs.getString(5));
         		bk.setStatus(rs.getString(6));
         		bk.setPhoto(rs.getString(7));
+        		bk.setEmail(rs.getString(8));
         		list.add(bk);
 				
 			}
@@ -265,6 +274,7 @@ public class BookDao {
         		bk.setBookCategory(rs.getString(5));
         		bk.setStatus(rs.getString(6));
         		bk.setPhoto(rs.getString(7));
+        		bk.setEmail(rs.getString(8));
         		list.add(bk);
 				
 			}
@@ -292,6 +302,7 @@ public class BookDao {
         		bk.setBookCategory(rs.getString(5));
         		bk.setStatus(rs.getString(6));
         		bk.setPhoto(rs.getString(7));
+        		bk.setEmail(rs.getString(8));
         		list.add(bk);
         	
 			}

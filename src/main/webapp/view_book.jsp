@@ -80,9 +80,9 @@ User user=(User)session.getAttribute("userObj");
 				if ("old".equals(bk.getBookCategory())) {
 				%>
 				<h5>Contact To Seller</h5>
-				<h5>
-					<i class="far fa-envelope"></i> EMail:
-					</h5>
+				
+				<h5><i class="far fa-envelope"></i> EMail: <%=bk.getEmail()%></h5>
+				
 				<%
 				}
 				%>

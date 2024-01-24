@@ -15,44 +15,31 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import jakarta.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class AdminAddBookServlet
- */
 @MultipartConfig
-public class AdminAddBookServlet extends HttpServlet {
+public class AddOldBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+  
+    public AddOldBook() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public AdminAddBookServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
 		String bookName = request.getParameter("bname");
 		String author = request.getParameter("author");
 		String price = request.getParameter("price");
-		String bookCategories = request.getParameter("btype");
-		String Status = request.getParameter("status");
+		String bookCategories ="old";
+		String Status ="Active";
 		Part photo = request.getPart("bimg");
+		String useremail=request.getParameter("useremail");
 		String photoName = photo.getSubmittedFileName();
-		String email="Admin";
 
 		try {
 
@@ -64,19 +51,19 @@ public class AdminAddBookServlet extends HttpServlet {
 			bk.setBookCategory(bookCategories);
 			bk.setStatus(Status);
 			bk.setPhoto(photoName);
-			bk.setEmail(email);
+			bk.setEmail(useremail);
 
 			book.addBook(bk);
 			String path = getServletContext().getRealPath("") + "books";
 			File file = new File(path);
 			photo.write(path + file.separator + photoName);
 			session.setAttribute("added", "Book Added Successfully...");
-			response.sendRedirect("admin/add_books.jsp");
+			response.sendRedirect("sell_books.jsp");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			session.setAttribute("failed", "Something went wrong...");
-			response.sendRedirect("admin/add_books.jsp");
+			response.sendRedirect("sell_books.jsp");
 		}
 
 		doGet(request, response);

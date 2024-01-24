@@ -43,6 +43,8 @@
 					<th scope="col">Price</th>
 					<th scope="col">Categories</th>
 					<th scope="col">Status</th>
+					<th scope="col">Email</th>
+					
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
@@ -62,6 +64,8 @@
 					<td><%=b.getPrice()%></td>
 					<td><%=b.getBookCategory()%></td>
 					<td><%=b.getStatus()%></td>
+					<td><%=b.getEmail()%></td>
+					
 					<td>
 					<%-- <td><c:url value="edit_book.jsp" var="editBookUrl">
 							<c:param name="id" value="${b.getBookId()}" />

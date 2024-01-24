@@ -148,7 +148,7 @@
     <button style=" width: inherit;" type="submit" class="btn btn-success">Order Now</button>
     </div>
      <div class="form-group col-md-6">
-    <button  style=" width: inherit;" type="submit" class="btn btn-warning">Continue Shopping</button>
+    <a href="new_books.jsp" style=" width: inherit;" type="submit" class="btn btn-warning">Continue Shopping</a>
    </div>
    </div>
 </form>

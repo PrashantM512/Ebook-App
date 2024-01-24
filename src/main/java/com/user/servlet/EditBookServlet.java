@@ -52,6 +52,7 @@ public class EditBookServlet extends HttpServlet {
 		String category=request.getParameter("btype");
 		String status=request.getParameter("status");
 		Part photo=request.getPart("bimg");
+		String email="Admin";
 		
 		
 		String photoName = Paths.get(photo.getSubmittedFileName()).getFileName().toString();
@@ -65,6 +66,7 @@ public class EditBookServlet extends HttpServlet {
 			bk.setPrice(price);
 			bk.setBookCategory(category);
 			bk.setStatus(status);
+			bk.setEmail(email);
 			if (photoName != null && !photoName.isEmpty()){
 				bk.setPhoto(photoName);
 			}
