@@ -15,6 +15,10 @@
 </head>
 <body>
 <%@include file="all_components/navbar.jsp" %>
+<c:if test="${not empty orderSuccess}">
+		<div class="alert alert-success" role="alert">${orderSuccess}</div>
+		<c:remove var="orderSuccess" scope="session" />
+	</c:if>
 <c:if test="${not empty removed }">
 <div class="alert alert-success" role="alert">
   ${removed}
@@ -54,6 +58,8 @@
                                 List<Cart> list = new ArrayList<Cart>();
                                 list = ckt.getCartProducts(uid);
                                 int i = 1;
+                                List<String> bookList=new ArrayList<String>();
+                                
                                 for (Cart crt : list) {
                                 %>
                                 <tr>
@@ -63,15 +69,14 @@
                                     <td><%=crt.getPrice() %></td>
                                     <td><a href="RemoveFromCart?cid=<%=crt.getCid()%>&&uid=<%=uid %>" class="btn btn-danger">Remove</a></td>
                                 </tr>
-                                
                                 <c:set var="total" value="<%=crt.getTotalPrice() %>">
-                                
                                 </c:set>
 
                                 <%
-                        
+                                bookList.add(crt.getBookName()+"(id="+crt.getBid()+")");
                                 i++;
                                 }
+                                List bklist=bookList;
                                 %>
                             </tbody>
                         </table>
@@ -92,57 +97,61 @@
 <div class="card mt-2">
 <div class="card-body">
 <h3 class="text-center text-success">Address and Details </h3>
-<form action="">
+<form action="OrderServlet?uid=${userObj.id }" method="post">
 <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Name</label>
-      <input type="text" value="${userObj.name }" class="form-control" id="inputEmail4" disabled placeholder="Full Name">
+      <input type="text" name="username" value="${userObj.name }" class="form-control" id="inputEmail4" readonly placeholder="Full Name">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Email</label>
-      <input value="${userObj.email }" disabled type="email" class="form-control" id="inputPassword4" placeholder="Email">
+      <input value="${userObj.email }" name="email" readonly type="email" class="form-control" id="inputPassword4" placeholder="Email">
     </div>
   </div>
   
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Mobile no.</label>
-      <input type="number" value="${userObj.phone }" disabled class="form-control" id="inputEmail4" placeholder="Mobile">
+      <input type="number" name="mobile" value="${userObj.phone }" class="form-control" id="inputEmail4" placeholder="Mobile" required>
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Address</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="Address">
+      <input type="text" name="address" class="form-control" id="inputPassword4" placeholder="Address" required>
     </div>
   </div>
   
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">landmark</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="landmark">
+      <input type="text" name="landmark" class="form-control" id="inputEmail4" placeholder="landmark"required>
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">City</label>
-      <input type="text" class="form-control" id="inputPassword4" placeholder="City">
+      <input type="text" name="city" class="form-control" id="inputPassword4" placeholder="City" required>
     </div>
   </div>
   
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">State</label>
-      <input type="text" class="form-control" id="inputEmail4" placeholder="State">
+      <input type="text" name="state" class="form-control" id="inputEmail4" placeholder="State" required>
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Pincode</label>
-      <input type="number" class="form-control" id="inputPassword4" placeholder="Pincode">
+      <input type="number" name="pincode" class="form-control" id="inputPassword4" placeholder="Pincode" required>
     </div>
   </div>
   <div class="form-group">
       <label for="inputState">Payment Type</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
+      <select id="inputState" name="payment" class="form-control">
+        <option selected>--Select--</option>
+        <option value="Cash On Delivery">Cash On Delivary</option>
       </select>
     </div>
+    
+    <input name="bookname" value="<%=bklist %>" type="hidden">
+    <input name="price" value="${total }" type="hidden">
+    
     <div class="form-row">
      <div class="form-group col-md-6">
     <button style=" width: inherit;" type="submit" class="btn btn-success">Order Now</button>

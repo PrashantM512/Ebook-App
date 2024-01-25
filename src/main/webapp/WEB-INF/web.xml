@@ -93,6 +93,13 @@
 		<servlet-name>UpdateProfileServlet</servlet-name>
 		<servlet-class>com.user.servlet.UpdateProfileServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<description>
+		</description>
+		<display-name>OrderServlet</display-name>
+		<servlet-name>OrderServlet</servlet-name>
+		<servlet-class>com.user.servlet.OrderServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/LoginServlet</url-pattern>
@@ -144,6 +151,10 @@
 	<servlet-mapping>
 		<servlet-name>UpdateProfileServlet</servlet-name>
 		<url-pattern>/UpdateProfileServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderServlet</servlet-name>
+		<url-pattern>/OrderServlet</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
