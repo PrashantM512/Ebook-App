@@ -125,6 +125,13 @@ public class User {
 		this.password = password;
 		
 	}
+	
+	public User(String name, String email, String phone) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phone=" + phone

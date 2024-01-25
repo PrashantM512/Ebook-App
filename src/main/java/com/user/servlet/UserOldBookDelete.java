@@ -2,11 +2,7 @@ package com.user.servlet;
 
 import java.io.IOException;
 import com.DAO.BookDao;
-import com.DAO.CartDAO;
 import com.DB.DBConnect;
-import com.entity.Book;
-import com.entity.Cart;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
