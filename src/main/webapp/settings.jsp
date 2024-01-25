@@ -16,7 +16,7 @@
 
 	<div class="container" style=" margin-bottom: 90px;">
 		<div class="row p-5">
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<a href="sell_books.jsp">
 					<div class="card mt-10">
 						<div class="card-body text-center">
@@ -28,7 +28,19 @@
 					</div>
 				</a>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
+				<a href="user_old_books.jsp">
+					<div class="card mt-10">
+						<div class="card-body text-center">
+							<div class="text-primary">
+								<i class="fas fa-book-open fa-3x"></i>
+							</div>
+							<h4>Manage Your Books</h4>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
 				<a href="edit_profile.jsp">
 					<div class="card">
 						<div class="card-body text-center">

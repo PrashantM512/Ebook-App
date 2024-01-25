@@ -313,4 +313,49 @@ public class BookDao {
     	return list;
     }
     
+    public List<Book> getUserOldBooksById(String bookCategory,String email){
+    	List<Book> list=new ArrayList<Book>();
+    	Book bk=null;
+    	try {
+			String query="SELECT * FROM book_dtls WHERE bookCategory=? and email=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setString(1, bookCategory);
+			stmt.setString(2, email);
+			ResultSet rs=stmt.executeQuery();
+			while(rs.next()) {
+				bk=new Book();
+				bk.setBookId(rs.getInt(1));
+        		bk.setBookName(rs.getString(2));
+        		bk.setAuthor(rs.getString(3));
+        		bk.setPrice(rs.getString(4));
+        		bk.setBookCategory(rs.getString(5));
+        		bk.setStatus(rs.getString(6));
+        		bk.setPhoto(rs.getString(7));
+        		bk.setEmail(rs.getString(8));
+        		list.add(bk);
+				
+			}
+			
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+    	
+    	return list;
+    }
+    
+    public boolean deleteUserOldBookById(int id) {
+    	boolean f=false;
+    	try {
+			String query="DELETE FROM book_dtls WHERE bookId=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1,id);
+			stmt.executeUpdate();
+			f=true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return f;
+    }
+    
 }
