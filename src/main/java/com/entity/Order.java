@@ -14,14 +14,56 @@ public class Order {
   	private String city;
   	private String state;
   	private int	pincode;
+  	private String date;
 	public Order() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Order(int uid, int orderId, String userName, String email, String address, String phone, String bookName, String price, String payment, String landmark, String city, String state, int pincode) {
+	public Order(int uid, int orderId, String userName, String email, String address, String phone, String bookName,
+			String price, String payment, String landmark, String city, String state, int pincode, String date) {
 		super();
 		this.uid = uid;
+		this.orderId = orderId;
+		this.userName = userName;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+		this.bookName = bookName;
+		this.price = price;
+		this.payment = payment;
+		this.landmark = landmark;
+		this.city = city;
+		this.state = state;
+		this.pincode = pincode;
+		this.date = date;
+	}
+
+
+
+	public Order(int orderId, String userName, String email, String address, String phone, String bookName,
+			String price, String payment, String landmark, String city, String state, int pincode, String date) {
+		super();
+		this.orderId = orderId;
+		this.userName = userName;
+		this.email = email;
+		this.address = address;
+		this.phone = phone;
+		this.bookName = bookName;
+		this.price = price;
+		this.payment = payment;
+		this.landmark = landmark;
+		this.city = city;
+		this.state = state;
+		this.pincode = pincode;
+		this.date = date;
+	}
+
+
+
+	public Order(int orderId, String userName, String email, String address, String phone, String bookName,
+			String price, String payment, String landmark, String city, String state, int pincode) {
+		super();
 		this.orderId = orderId;
 		this.userName = userName;
 		this.email = email;
@@ -43,24 +85,6 @@ public class Order {
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
-
-	public Order(int uid, String userName, String email, String address, String phone, String bookName, 
-			String price, String payment, String landmark, String city, String state, int pincode) {
-		super();
-		this.uid = uid;
-		this.userName = userName;
-		this.email = email;
-		this.address = address;
-		this.phone = phone;
-		this.bookName = bookName;
-		this.price = price;
-		this.payment = payment;
-		this.landmark = landmark;
-		this.city = city;
-		this.state = state;
-		this.pincode = pincode;
-	}
-
 	public int getOrderId() {
 		return orderId;
 	}
@@ -134,5 +158,14 @@ public class Order {
 		this.pincode = pincode;
 	}
 
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+   
+   
   	
 }

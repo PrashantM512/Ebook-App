@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.DAO.OrderDAO"%>
+<%@page import="com.DB.DBConnect"%>
+<%@page import="java.util.*"%>
+<%@page import="com.entity.*"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,39 +19,34 @@
 <table class="table mt-3 mb-2">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Order Id</th>
-      <th scope="col">Name</th>
+      <th scope="col">Sr.NO.</th>
       <th scope="col">Book Name</th>
-      <th scope="col">Author</th>
       <th scope="col">Price</th>
+       <th scope="col">Timestamp</th>
       <th scope="col">Payment Type</th>
     </tr>
   </thead>
   <tbody>
+   <%
+  User us=(User)session.getAttribute("userObj");
+  int uid=us.getId();
+  OrderDAO order=new OrderDAO(DBConnect.getConnection());
+  List<Order> list=order.getOrdersByUid(uid);
+  int i=1;
+  for(Order od:list){
+	  %>
+	
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row"><%=i %></th>
+      <td><%=od.getBookName() %></td>
+      <td><%=od.getPrice() %></td>
+      <td><%=od.getDate() %></td>
+      <td><%=od.getPayment() %></td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
+      <%
+      i++;
+  }
+  %>
   </tbody>
 </table>
 </div>

@@ -4,14 +4,12 @@ import java.io.IOException;
 
 import jakarta.servlet.http.HttpSession;
 
+import com.DAO.CartDAO;
 import com.DAO.OrderDAO;
-import com.DAO.UserDAOImpl;
 import com.DB.DBConnect;
 import com.entity.Order;
-import com.entity.User;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,26 +19,15 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 public class OrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+  
     public OrderServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session=request.getSession();
@@ -61,9 +48,15 @@ public class OrderServlet extends HttpServlet {
 		try {
 			OrderDAO ord=new OrderDAO(DBConnect.getConnection());
 			Order order=new Order(uid,userName,email,address,phone,bookName,price,payment,landmark,city,state,pincode);
-			ord.addOrderById(uid, order);
-			session.setAttribute("orderSuccess", "Your order Placed successfully...");
-			response.sendRedirect("cart.jsp?uid="+uid);
+			Order f=ord.addOrderById(uid, order);
+			if(f!=null) {
+				CartDAO cart=new CartDAO(DBConnect.getConnection());
+				cart.removeAllFromCart(uid);
+				session.setAttribute("orderSuccess", "Your order Placed successfully...");
+				response.sendRedirect("cart.jsp?uid="+uid);
+			}else {
+				
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

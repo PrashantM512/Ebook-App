@@ -83,5 +83,20 @@ public class CartDAO {
 		return f;
 	}
 
+	public boolean removeAllFromCart(int uid) {
+		boolean f=false;
+		try {
+			String query="DELETE FROM cart WHERE uid=?";
+			PreparedStatement stmt=conn.prepareStatement(query);
+			stmt.setInt(1, uid);
+			stmt.executeUpdate();
+			f=true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return f;
+	}
 	 
 }
