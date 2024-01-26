@@ -57,6 +57,7 @@
                                 CartDAO ckt = new CartDAO(DBConnect.getConnection());
                                 List<Cart> list = new ArrayList<Cart>();
                                 list = ckt.getCartProducts(uid);
+                                int cartItems=list.size();
                                 int i = 1;
                                 List<String> bookList=new ArrayList<String>();
                                 
@@ -78,6 +79,7 @@
                                 }
                                 List bklist=bookList;
                                 %>
+                               
                             </tbody>
                         </table>
                     </div>
@@ -151,10 +153,15 @@
     
     <input name="bookname" value="<%=bklist %>" type="hidden">
     <input name="price" value="${total }" type="hidden">
-    
     <div class="form-row">
      <div class="form-group col-md-6">
-    <button style=" width: inherit;" type="submit" class="btn btn-success">Order Now</button>
+   <%
+   if(cartItems!=0){
+	   %>
+	   <button style=" width: inherit;" type="submit" class="btn btn-success">Order Now</button>
+  <%
+   }
+   %>
     </div>
      <div class="form-group col-md-6">
     <a href="new_books.jsp" style=" width: inherit;" type="submit" class="btn btn-warning">Continue Shopping</a>

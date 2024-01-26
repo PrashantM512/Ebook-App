@@ -358,4 +358,36 @@ public class BookDao {
     	return f;
     }
     
+    public List<Book> searchBooks(String key) {
+    	List<Book> list=new ArrayList<Book>();
+    	Book book=null;
+    	try {
+    		String query = "SELECT * FROM book_dtls WHERE boookName LIKE ? OR author LIKE ? OR bookCategory LIKE ? AND status=?";
+            PreparedStatement stmt=conn.prepareStatement(query);
+            stmt.setString(1, "%" + key + "%");
+            stmt.setString(2, "%" + key + "%");
+            stmt.setString(3, "%" + key + "%");
+            stmt.setString(4, "New");
+            ResultSet rs= stmt.executeQuery();
+            while(rs.next()) {
+            	book=new Book();
+            	book.setBookId(rs.getInt(1));
+            	book.setBookName(rs.getString(2));
+            	book.setAuthor(rs.getString(3));
+            	book.setPrice(rs.getString(4));
+            	book.setBookCategory(rs.getString(5));
+            	book.setStatus(rs.getString(6));
+            	book.setPhoto(rs.getString(7));
+            	book.setEmail(rs.getString(8));
+            	list.add(book);
+            	
+            }
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	return list;
+    }
+    
 }
