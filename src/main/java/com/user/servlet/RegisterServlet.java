@@ -41,22 +41,27 @@ public class RegisterServlet extends HttpServlet {
            // System.out.print(name+""+email+""+phone+""+password+""+check);
 			
 			if(check!=null) {
-				User us=new User();
-				us.setName(name);
-				us.setEmail(email);
-				us.setPhone(phone);
-				us.setPassword(password);
-				
-				UserDAOImpl dao=new UserDAOImpl(DBConnect.getConnection());
-				boolean f=dao.userRegister(us);
-				if(f) {
-					//System.out.println("successfully Registerd..");
-					session.setAttribute("success","Successfully Registerd.." );
+				UserDAOImpl usr=new UserDAOImpl(DBConnect.getConnection());
+				boolean t=usr.getUserByEmail(email);
+				if(t) {
+					session.setAttribute("exist","User already exists ! try with different email id..." );
 					response.sendRedirect("register.jsp");
 				}else {
-					//System.out.println("Something went wrong..");
-					session.setAttribute("unsuccess","Something went wrong..");
-					response.sendRedirect("register.jsp");
+					User us=new User();
+					us.setName(name);
+					us.setEmail(email);
+					us.setPhone(phone);
+					us.setPassword(password);
+					
+					UserDAOImpl dao=new UserDAOImpl(DBConnect.getConnection());
+					boolean f=dao.userRegister(us);
+					if(f) {
+						session.setAttribute("success","Successfully Registerd.." );
+						response.sendRedirect("register.jsp");
+					}else {
+						session.setAttribute("unsuccess","Something went wrong..");
+						response.sendRedirect("register.jsp");
+					}
 				}
 				
 			}else {

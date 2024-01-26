@@ -15,7 +15,9 @@
 </head>
 <body>
 	<%@include file="all_components/navbar.jsp"%>
-
+	<c:if test="${empty userObj }">
+		<c:redirect url="../login.jsp" />
+	</c:if>
 	<div class="container p-2">
 		<div class="row">
 			<div class="col-md-4 offset-md-4">
@@ -29,18 +31,15 @@
 						</c:if>
 
 						<%
-						
-							User usobj = (User) session.getAttribute("userObj");
-							int id = usobj.getId();
-							UserDAOImpl us = new UserDAOImpl(DBConnect.getConnection());
-							User user = us.getUserById(id);
-                        
-					%>
+						User usobj = (User) session.getAttribute("userObj");
+						int id = usobj.getId();
+						UserDAOImpl us = new UserDAOImpl(DBConnect.getConnection());
+						User user = us.getUserById(id);
+						%>
+						<form action="UpdateProfileServlet?id=<%=id%>" method="post">
 
-						<form action="UpdateProfileServlet?id=<%=id %>" method="post">
-                             
-                             <input name="id" value="<%=id %>" type="hidden">
-                             
+							<input name="id" value="<%=id%>" type="hidden">
+
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Name</label>
 								<input type="text" value="<%=user.getName()%>"
@@ -59,7 +58,7 @@
 									class="form-control" id="exampleInputEmail1"
 									aria-describedby="emailHelp" name="phone" required>
 							</div>
-							
+
 							<div class="mb-3">
 								<label for="exampleInputPassword1" class="form-label">Password</label>
 								<input type="password" class="form-control" name="password"
@@ -68,8 +67,7 @@
 
 							<button type="submit" class="btn btn-primary">Update</button>
 						</form>
-						
-						
+
 					</div>
 				</div>
 			</div>

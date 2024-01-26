@@ -4,7 +4,7 @@
 <%@page import="com.DAO.BookDao"%>
 <%@page import="com.DB.DBConnect"%>
 <%@page import="java.util.*"%>
-<%@page import="com.entity.*"%> 
+<%@page import="com.entity.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,6 @@
 					<th scope="col">Categories</th>
 					<th scope="col">Status</th>
 					<th scope="col">Email</th>
-					
 					<th scope="col">Action</th>
 				</tr>
 			</thead>
@@ -65,15 +64,17 @@
 					<td><%=b.getBookCategory()%></td>
 					<td><%=b.getStatus()%></td>
 					<td><%=b.getEmail()%></td>
-					
+
 					<td>
-					<%-- <td><c:url value="edit_book.jsp" var="editBookUrl">
+						<%-- <td><c:url value="edit_book.jsp" var="editBookUrl">
 							<c:param name="id" value="${b.getBookId()}" />
 						</c:url> <a href="${editBookUrl}" class="btn btn-sm btn-primary">Edit</a> --%>
-               
-						<a href="../GetBookServlet?id=<%=b.getBookId() %>" class="btn btn-sm btn-primary">Edit</a>
-						<a href="../DeleteBookServlet?id=<%=b.getBookId() %>" class="btn btn-sm btn-danger">Delete</a>
-						</td>
+
+						<a href="../GetBookServlet?id=<%=b.getBookId()%>"
+						class="btn btn-sm btn-primary">Edit</a> <a
+						href="../DeleteBookServlet?id=<%=b.getBookId()%>"
+						class="btn btn-sm btn-danger">Delete</a>
+					</td>
 				</tr>
 				<%
 				}

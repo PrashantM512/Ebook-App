@@ -9,8 +9,8 @@
 <%@include file="all_components/allCss.jsp"%>
 </head>
 <style>
-.card-body{
-   background-color: #f1f1f1;
+.card-body {
+	background-color: #f1f1f1;
 }
 </style>
 <body>
@@ -37,8 +37,9 @@
 							<div class="text-primary">
 								<i class="fas fa-book-open fa-3x"></i>
 							</div>
-							<h4>Sell old Book</h4><br>
-							
+							<h4>Sell old Book</h4>
+							<br>
+
 						</div>
 					</div>
 				</a>
@@ -50,7 +51,8 @@
 							<div class="text-primary">
 								<i class="fas fa-book-open fa-3x"></i>
 							</div>
-							<h4>Manage Your Books</h4><br>
+							<h4>Manage Your Books</h4>
+							<br>
 						</div>
 					</div>
 				</a>
@@ -70,7 +72,7 @@
 		</div>
 
 		<div class="row">
-			
+
 			<div class="col-md-6">
 				<a href="orders.jsp">
 					<div class="card">

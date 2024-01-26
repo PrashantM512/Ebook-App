@@ -68,7 +68,7 @@ to {
 			<%
 			List<Book> bklist = (List<Book>) request.getAttribute("list");
 			if (bklist != null) {
-			    for (Book bk : bklist) {
+				for (Book bk : bklist) {
 			%>
 			<div class="col-md-3">
 				<div class="card">
@@ -111,10 +111,10 @@ to {
 					</div>
 				</div>
 			</div>
-		<%
-    }
-}
-%>
+			<%
+			}
+			}
+			%>
 		</div>
 	</div>
 

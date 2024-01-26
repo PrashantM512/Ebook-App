@@ -28,22 +28,31 @@
 	visibility: hidden;
 	box-shadow: 0px 0px 100px #000;
 }
+
 #toast.display {
 	visibility: visible;
 	animation: fadeIn 0.5, fadeOut 0.5s 2.5s;
 }
-@keyframes fadeIn {from { bottom:0;
+
+@
+keyframes fadeIn {from { bottom:0;
 	opacity: 0;
 }
+
 to {
-	bottom: 30px;opacity: 1;
-}
-}
-@keyframes fadeOut {form { bottom:30px;
+	bottom: 30px;
 	opacity: 1;
 }
+
+}
+@
+keyframes fadeOut {form { bottom:30px;
+	opacity: 1;
+}
+
 to {
-	bottom: 0;opacity: 0;
+	bottom: 0;
+	opacity: 0;
 }
 }
 </style>
@@ -55,9 +64,9 @@ to {
 	BookDao book = new BookDao(DBConnect.getConnection());
 	Book bk = book.getBookById(id);
 	%>
-<%
-User user=(User)session.getAttribute("userObj");
-%>
+	<%
+	User user = (User) session.getAttribute("userObj");
+	%>
 	<div class="container p-3">
 		<div class="row">
 			<div class="col-md-6 text-center p-5 border bg-white">
@@ -75,14 +84,16 @@ User user=(User)session.getAttribute("userObj");
 			</div>
 			<div class="col-md-6 text-center p-5 border bg-white">
 				<h2><%=bk.getBookName()%></h2>
-				
+
 				<%
 				if ("old".equals(bk.getBookCategory())) {
 				%>
 				<h5>Contact To Seller</h5>
-				
-				<h5><i class="far fa-envelope"></i> EMail: <%=bk.getEmail()%></h5>
-				
+
+				<h5>
+					<i class="far fa-envelope"></i> EMail:
+					<%=bk.getEmail()%></h5>
+
 				<%
 				}
 				%>
@@ -100,41 +111,46 @@ User user=(User)session.getAttribute("userObj");
 						<p>Free Shipping</p>
 					</div>
 				</div>
-				
+
 				<%
-				if(bk.getBookCategory().equals("old")){
-					%>
-					<div class=" text-center p-3">
-					<a href="index.jsp" class="btn btn-primary"><i class="fas fa-cart-plus"></i>
-					   Continue Shopping</a> <a href="" class="btn btn-danger"><i
-						class="fas fa-rupee-sign"></i> <%=bk.getPrice()%></a>
+				if (bk.getBookCategory().equals("old")) {
+				%>
+				<div class=" text-center p-3">
+					<a href="index.jsp" class="btn btn-primary"><i
+						class="fas fa-cart-plus"></i> Continue Shopping</a> <a href=""
+						class="btn btn-danger"><i class="fas fa-rupee-sign"></i> <%=bk.getPrice()%></a>
 				</div>
+				<%
+				} else {
+				%>
+				<div class=" text-center p-3">
+
 					<%
-				}else{
+					if (user == null) {
 					%>
-						<div class=" text-center p-3">
-						
+					<a href="login.jsp" class="btn btn-primary btn ml-2"><i
+						class="fa-solid fa-cart-shopping"></i> Add Cart</a>
 					<%
-							if(user==null){ %>
-								<a href="login.jsp" class="btn btn-primary btn ml-2"><i class="fa-solid fa-cart-shopping"></i> Add Cart</a>
-							<%	
-							}else{
-							%>
-							<a href="CartServlet?bid=<%=bk.getBookId() %>&&uid=<%=user.getId() %>" class="btn btn-primary btn ml-2"><i class="fa-solid fa-cart-shopping"></i> Add Cart</a>
-							<%
-							}
-							%>
-					<a href="" class="btn btn-danger">
-					<i class="fas fa-rupee-sign"></i> <%=bk.getPrice()%></a>
+					} else {
+					%>
+					<a
+						href="CartServlet?bid=<%=bk.getBookId()%>&&uid=<%=user.getId()%>"
+						class="btn btn-primary btn ml-2"><i
+						class="fa-solid fa-cart-shopping"></i> Add Cart</a>
+					<%
+					}
+					%>
+					<a href="" class="btn btn-danger"> <i class="fas fa-rupee-sign"></i>
+						<%=bk.getPrice()%></a>
 				</div>
-					<%
+				<%
 				}
 				%>
-				
+
 			</div>
 		</div>
 	</div>
-	
+
 	<%@include file="all_components/footer.jsp"%>
 </body>
 </html>

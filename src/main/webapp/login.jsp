@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +20,8 @@
 						<form action="LoginServlet" method="post">
 							<h4 class="text-center">Login Here</h4>
 							<c:if test="${not empty invalid }">
-							<p class="text-center text-danger">${invalid}</p>
-							<c:remove var="invalid" scope="session"/>
+								<p class="text-center text-danger">${invalid}</p>
+								<c:remove var="invalid" scope="session" />
 							</c:if>
 							<div class="mb-3">
 								<label for="exampleInputEmail1" class="form-label">Email
@@ -33,7 +33,7 @@
 								<input type="password" name="password" class="form-control"
 									id="exampleInputPassword1" required>
 							</div>
-							
+
 							<button type="submit" class="btn btn-primary full-btn">Submit</button>
 						</form>
 						<a href="register.jsp" class="btn btn-success full-btn mt-1">Not

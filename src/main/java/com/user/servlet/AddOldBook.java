@@ -18,27 +18,29 @@ import jakarta.servlet.http.HttpSession;
 @MultipartConfig
 public class AddOldBook extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-    public AddOldBook() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AddOldBook() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
 		String bookName = request.getParameter("bname");
 		String author = request.getParameter("author");
 		String price = request.getParameter("price");
-		String bookCategories ="old";
-		String Status ="Active";
+		String bookCategories = "old";
+		String Status = "Active";
 		Part photo = request.getPart("bimg");
-		String useremail=request.getParameter("useremail");
+		String useremail = request.getParameter("useremail");
 		String photoName = photo.getSubmittedFileName();
 
 		try {

@@ -23,6 +23,10 @@
 						<p class="text-center text-success">${success}</p>
 						<c:remove var="success" scope="session"/>
 						</c:if>
+						<c:if test="${not empty exist}">
+						<p class="text-center text-danger">${exist}</p>
+						<c:remove var="exist" scope="session"/>
+						</c:if>
 						
 						<c:if test="${not empty unsuccess}">
 						<p class="text-center text-danger">${unsuccess}</p>

@@ -107,10 +107,24 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return user;
 	}
-	
-	
 
-	
-	
-	
+
+	public boolean getUserByEmail(String email) {
+	    boolean f = false;
+	    try {
+	        String query = "SELECT * FROM user WHERE email=?";
+	        PreparedStatement stmt = conn.prepareStatement(query);
+	        stmt.setString(1, email);
+	        ResultSet rs = stmt.executeQuery();
+	        if (rs.next()) {
+	            f = true;
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return f;
+	}
+
 }
